@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Yuvraj's Web</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .login-container, .welcome-container, .website-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box, .welcome-box, .website-box {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box {
+            background-color: #ff69b4; /* Dark pink */
+        }
+
+        .welcome-box {
+            background-color: #00FFFF; /* Aqua */
+            display: none; /* Initially hidden */
+        }
+
+        .website-box {
+            background-color: #4682B4; /* Steel Blue */
+            color: white;
+            cursor: pointer;
+            display: none; /* Initially hidden */
+        }
+
+        .box h2 {
+            margin-top: 0;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-message">
+        <h1 id="welcomeText">Welcome to Yuvraj's Web</h1>
+    </div>
+
+    <div class="login-container">
+        <div class="login-box box">
+            <h2>E.D.I.T.H USER</h2>
+            <form id="loginForm" onsubmit="return login()">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="welcome-container">
+        <div class="welcome-box box">
+            <h2>Welcome to Yuvraj's Web</h2>
+        </div>
+    </div>
+
+    <div class="website-container">
+        <div class="website-box box" onclick="openExternalWebsite()">
+            <h2>Open External Website</h2>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "yuvraj.EDITH" && password === "EDITH.YUV") {
+                alert("Login successful!");
+                document.querySelector('.login-container').style.display = 'none';
+                document.querySelector('.welcome-box').style.display = 'block';
+                document.querySelector('.website-box').style.display = 'block';
+                return false;
+            } else {
+                alert("Invalid username or password. Please try again.");
+                return false;
+            }
+        }
+
+        function openExternalWebsite() {
+            window.open("https://takipcimx.net/login", "_blank");
+        }
+
+        // Change welcome message color every 2 seconds
+        setInterval(changeWelcomeMessageColor, 2000);
+
+        function changeWelcomeMessageColor() {
+            var colors = ["red", "pink", "aqua", "green", "darkgreen", "purple", "brown"];
+            var welcomeText = document.getElementById("welcomeText");
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            welcomeText.style.color = randomColor;
+        }
+    </script>
+</body>
+</html>
